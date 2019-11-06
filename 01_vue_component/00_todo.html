@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todo</title>
+  
+</head>
+<body>
+  <div id="app">
+    <input type="text">
+    <button>+</button>
+    <li>
+      <span></span>
+      <button>x</button>
+    </li>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todos: [],
+        newTodo: '',
+      },
+      methods: {
+				addTodo: function() {
+				
+				},
+				removeTodo: function() {
+				
+				}
+      }
+    })
+  </script>
+</body>
+</html>
