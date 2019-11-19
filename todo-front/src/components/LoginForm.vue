@@ -31,6 +31,8 @@
 
 <script>
 import axios from 'axios'
+import router from '@/router'
+// 홈 이라는 페이지에 사용자를 보내주겠다.
 
 
 export default {
@@ -50,13 +52,25 @@ export default {
     login() {
       if(this.checkForm()) {
         this.loading = true
+        // http://127.0.0.1:8000
         const SERVER_IP = process.env.VUE_APP_SERVER_IP
         // 이거 기입하는거는....음. 좀 암기 측면인가 암튼 기억 잘 해둬야겠다.
 
-        axios.get(SERVER_IP, this.credentials)
+        axios.post(SERVER_IP + '/api-token-auth/', this.credentials)
           .then(response => {
-            console.log(response)
+
+            // 세션을 초기화. 사용하겠다.
+            this.$session.start()
+
+            // 응답결과를 세션에 저장하겠다.
+            // this.$session.set(key, value)
+            this.$session.set('jwt', response.data.token)
+
             this.loading = false
+
+            // vue router 를 통해 특정 페이지로 이동
+            router.push('/')
+
           })
           .catch(error => {
             console.error(error)

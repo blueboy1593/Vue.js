@@ -10,6 +10,8 @@ class User(AbstractUser):
 
 
 class Todo(models.Model):
+    # user.todo_set.all()
+    # user.todos.all() related_name을 적었을 때
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     completed = models.BooleanField(default=False)
