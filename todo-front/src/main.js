@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import store from './store'
 // import router from './router/index.js' 랑 똑같은거라 생각.
 
 Vue.config.productionTip = false
@@ -14,5 +15,6 @@ Vue.use(VueSession)
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

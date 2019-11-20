@@ -66,6 +66,9 @@ export default {
             // this.$session.set(key, value)
             this.$session.set('jwt', response.data.token)
 
+            // vuex store 를 접근 가능
+            this.$store.dispatch('login', response.data.token)
+
             this.loading = false
 
             // vue router 를 통해 특정 페이지로 이동
