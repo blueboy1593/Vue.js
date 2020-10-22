@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Vue 도움되는 콘솔 경고를 포함한 개발 버전 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Vue Start</title>
+</head>
+<body>
+  <div>
+    {{ message }}
+    <div id="app">
+      {{ message }} : {{ count }}
+      <button v-on:click="plus">plus</button>
+      <button v-on:click="minus">minus</button>
+      <!-- 이거는 v-on을 하면 플러스라는 함수를 하라고 하는거 같은데...? -->
+    </div>
+  </div>  
+  <script>
+    // Vue 코드가 작성되는 곳
+    const app = new Vue({
+      el: '#app',
+      // el: '.app', CSS Selector
+      data: {
+        message: 'Hello, Vue!',
+        count: 0,
+        // 오브젝트와 똑같다고 생각하면 됨. 모든 객체 타입을 가질 수 있다.
+      },
+      // 얘도 마찬가지로 오브젝트 스타트이다!!! function을 넣으면 오류가 나는 것.
+      // 반드시 function 키워드를 통해 뭘 써야한다. 애로우 펀션 쓰면 안됨.
+      methods: {
+        plus: function() {
+          // function 키워드로 함수정의를 해야 this 가 Vue 인스턴스를 가르친다.
+          // 애로우 function에서 views는 윈도우 머시기를 가르친다.
+          // 이렇게 만들어주는게 굉장히 중요해
+          this.count++
+        },
+        minus: function() {
+          this.count--
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>
